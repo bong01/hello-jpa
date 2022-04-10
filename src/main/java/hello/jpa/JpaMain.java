@@ -112,7 +112,71 @@ public class JpaMain {
 //
 //            Member findMember = em.find(Member.class, 150L);
 
-            System.out.println("==============================");
+//            System.out.println("==============================");
+
+            /**
+             * @Enumerated
+             */
+//            Member member = new Member();
+//            member.setId(1L);
+//            member.setUsername("A");
+//            member.setRoleType(RoleType.USER);
+//
+//            em.persist(member);
+//
+//            Member member2 = new Member();
+//            member2.setId(2L);
+//            member2.setUsername("B");
+//            member2.setRoleType(RoleType.ADMIN);
+//
+//            em.persist(member2);
+//
+//            Member member3 = new Member();
+//            member3.setId(3L);
+//            member3.setUsername("C");
+//            member3.setRoleType(RoleType.GUEST);
+//
+//            em.persist(member3);
+
+            /**
+             * 기본 키 매핑 - IDENTITY
+             */
+//            Member member = new Member();
+////            member.setId("ID_A");
+//            member.setUsername("C");
+//
+//            //IDENTITY 전략은 em.persist() 시점에 즉시 INSERT SQL을 실행하고 DB에서 식별자를 조회
+//            System.out.println("=======================");
+//
+//            em.persist(member);
+//
+//            System.out.println("member1.id = " + member.getId());
+//            System.out.println("=======================");
+
+            /**
+             * 기본 키 매핑 - SEQUENCE
+             */
+            Member member1 = new Member();
+            member1.setUsername("A");
+
+            Member member2 = new Member();
+            member2.setUsername("B");
+
+            Member member3 = new Member();
+            member3.setUsername("C");
+
+            System.out.println("======================");
+
+            em.persist(member1); //1, 51
+            em.persist(member2); //MEM
+            em.persist(member3); //MEM
+
+            System.out.println("member1 = " + member1.getId());
+            System.out.println("member2 = " + member2.getId());
+            System.out.println("member3 = " + member3.getId());
+
+            System.out.println("======================");
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
